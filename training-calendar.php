@@ -20,4 +20,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 with this program. If not, visit: https://www.gnu.org/licenses/
 */
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
+// if admin area
+if ( is_admin() ) {
+
+	// include dependencies
+	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-menu.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-page.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
+	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-validate.php';
+}
+
+// include plugin dependencies: admin and public
+require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
+
+
+// default plugin options
+function training_calendar_options_default() {
+
+	return array(
+		'image_url'     => '',
+	);
+
+}
