@@ -4,17 +4,13 @@
 
 // disable direct file access
 if ( ! defined( 'ABSPATH' ) ) {
-
 	exit;
-
 }
 
 
 // callback: login section
 function training_calendar_callback_section() {
-
 	echo '<p>These settings enable you to customize the WP Login screen.</p>';
-
 }
 
 
@@ -33,6 +29,20 @@ function training_calendar_callback_field_text( $args ) {
 
 }
 
+// callback: text field
+function training_calendar_callback_field_password( $args ) {
+
+	$options = get_option( 'training_calendar_options', training_calendar_options_default() );
+
+	$id    = isset( $args['id'] )    ? $args['id']    : '';
+	$label = isset( $args['label'] ) ? $args['label'] : '';
+
+	$value = isset( $options[$id] ) ? sanitize_text_field( $options[$id] ) : '';
+
+	echo '<input id="training_calendar_options_'. $id .'" name="training_calendar_options['. $id .']" type="password" size="40" value="'. $value .'"><br />';
+	echo '<label for="training_calendar_options_'. $id .'">'. $label .'</label>';
+
+}
 
 
 // callback: radio field

@@ -69,6 +69,15 @@ function myplugin_register_settings() {
 		'training_calendar_section',
 		[ 'id' => 'image_url', 'label' => 'URL for training calendar background image' ]
 	);
+
+	add_settings_field(
+		'google_api_key',
+		'Google Api Key',
+		'training_calendar_callback_field_password',
+		'training_calendar',
+		'training_calendar_section',
+		[ 'id' => 'google_api_key', 'label' => 'Google Api Key for map functionality' ]
+	);
 }
 add_action( 'admin_init', 'myplugin_register_settings' );
 

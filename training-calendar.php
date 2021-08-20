@@ -24,20 +24,24 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+define( 'TRAINING_CALENDAR_VERSION', '1.0.0' );
+define( 'TRAINING_CALENDAR_DOMAIN', 'training-calendar' );
+define( 'TRAINING_CALENDAR_PATH', plugin_dir_path( __FILE__ ) );
+
 // if admin area
 if ( is_admin() ) {
 
 	// include dependencies
-	require_once plugin_dir_path( __FILE__ ) . 'admin/admin-menu.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-page.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-register.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-callbacks.php';
-	require_once plugin_dir_path( __FILE__ ) . 'admin/settings-validate.php';
+	require_once TRAINING_CALENDAR_PATH . 'admin/admin-menu.php';
+	require_once TRAINING_CALENDAR_PATH . 'admin/settings-page.php';
+	require_once TRAINING_CALENDAR_PATH . 'admin/settings-register.php';
+	require_once TRAINING_CALENDAR_PATH . 'admin/settings-callbacks.php';
+	require_once TRAINING_CALENDAR_PATH . 'admin/settings-validate.php';
 }
 
 // include plugin dependencies: admin and public
-require_once plugin_dir_path( __FILE__ ) . 'includes/core-functions.php';
-
+require_once TRAINING_CALENDAR_PATH . 'includes/core-functions.php';
+require_once TRAINING_CALENDAR_PATH . 'post-types/register.php';
 
 // default plugin options
 function training_calendar_options_default() {
